@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Transitioning bar to line point</title>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */
+		</style>
+	</head>
+	<body>
+        <div id='box'>To Box</div>
+        <div id='point'>To Point</div>
+        
+        <script type="text/javascript">
+			//Width and height
+			var w = 500;
+            var h = 300;
+            var padding = 30;
+
+            //
+            var mySVG = d3.select('body').append('svg').attr('width', w).attr('height', h);
+
+            var data = [10, 15, 20, 17, 12, 5, 11];
+
+            //Create scale functions
+			var xScale = d3.scaleLinear()
+								 .domain([0, data.length])
+								 .range([padding, w - padding * 2]);
+
+			var yScale = d3.scaleLinear()
+								 .domain([0, d3.max(data)])
+								 .range([h - padding, padding]);
+
+            // Create elements as rectangles
+            mySVG.selectAll('rect')
+                .data(data)
+                .enter()
+                .append("rect")
+                    .attr("rx",5)
+                    .attr("ry",5)
+                    .attr("x",10)
+                    .attr("y",10)
+                    .attr("width",5)
+                    .attr("height",5)
+                    .attr("stroke","black")
+                    .attr("fill","white")
+                .transition().delay(500)
+                    .attr("rx",5)
+                    .attr("ry",5)
+                    .attr("x",(d,i)=>15*i)
+                    .attr("y",d => 10+10*d)
+                    .attr("width",5)
+                    .attr("height",5) ;                   
+
+            d3.select("#box")
+				.on("click", function(){
+                    mySVG.selectAll('rect')
+                    .transition()
+                        .attr("rx",0)
+                        .attr("ry",0)
+                        .attr("x",(d,i)=>15*i)
+                        .attr("y",10)
+                        .attr("width",10)
+                        .attr("height",d => 10*d)
+                        .attr("stroke","black")
+                        .attr("fill","white") ;                    
+
+                })
+            d3.select("#point")
+				.on("click", function(){
+                    mySVG.selectAll('rect')
+                    .transition()
+                        .attr("rx",5)
+                        .attr("ry",5)
+                        .attr("x",(d,i)=>15*i)
+                        .attr("y",d => 10+10*d)
+                        .attr("width",5)
+                        .attr("height",5);   
+                })                
+
+        </script>
+    </body>
+</html>
