@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="myStyle.css" >
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+
+<body>
+    <p>
+    <label for="radius">
+        x coordinate =
+    </label>
+    <select id="radius" onchange="changePlot()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+    </select>
+    </p>
+
+    <svg width="500px" height="500px" style="background:whiteSmoke;"></svg>
+    <script src="myScript.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+body {
+    background: steelblue;
+    text-align: left;
+  }
+
+  p {
+    font-size: 25px;
+    font-family: Helvetica;
+  }
