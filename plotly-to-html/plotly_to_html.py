@@ -1,6 +1,16 @@
 # Plotly Express is now a sublibrary of Plotly:
 import plotly.express as px
 
+# plotly installation
+# - Python > 3.5 installation (for example Anaconda distro)
+# - pip/conda install plotly
+# - jupyter lab:​ (nodejs and the Plotly extension are needed):​
+#   - conda install -y -c conda-forge nodejs
+#   - npm i -g npm
+#   - jupyter labextension install @jupyterlab/plotly-extension​
+# - orca:​ (needed for static image generation):​
+#   - conda install -y -c plotly plotly-orca psutil requests
+
 import pandas as pd
 
 gapminder = px.data.gapminder()
